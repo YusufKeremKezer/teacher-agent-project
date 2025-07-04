@@ -1,0 +1,8 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "teacher_agent": "src/maestro/application/conversation_service/workflow/graph.py:graph"
+  },
+  "env": "./.env"
+  
+}
