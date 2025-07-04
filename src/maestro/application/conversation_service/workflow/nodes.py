@@ -1,21 +1,16 @@
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import RemoveMessage
 from ....config import settings
-from langchain_community.chat_models import ChatOllama
 from maestro.application.conversation_service.workflow.chains import (
 get_conversation_summary_chain,
 get_teacher_response_chain,
 get_brave_search_chain,
-get_should_brave_search_chain,
 )
 from typing_extensions import Literal
 from maestro.application.conversation_service.workflow.state import TeacherState
 from .tools import (
     retriever_tool,
-    brave_search_tool,
 )
 from langgraph.prebuilt import ToolNode
-from maestro.domain.teacher_factory import PERSONAL_SITES
 
 
 async def summarize_conversation_node(state: TeacherState):
@@ -66,10 +61,6 @@ async def brave_search_node(state: TeacherState, ):
             "summary": summary,
         },
         
-    delete_messages = [
-        RemoveMessage(id=m.id)
-        for m in state["messages"][: -settings.TOTAL_MESSAGES_AFTER_SUMMARY]
-    ]
     )
 
     return {"messages": response}

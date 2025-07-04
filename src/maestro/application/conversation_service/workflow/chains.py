@@ -1,7 +1,4 @@
-from langchain_ollama import ChatOllama
-
 from ....config import settings
-from ....domain.teachers import Teacher
 
 from ....domain.prompts import (
     TEACHER_CHARACTER_CARD,
@@ -10,18 +7,15 @@ from ....domain.prompts import (
     SHOULD_BRAVE_SEARCH_PROMPT,
 )
 
-
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 from ....domain.prompts import BRAVE_SEARCH_PROMPT
 from ....application.conversation_service.workflow.tools import retriever_tool, brave_search_tool
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 
-
-def get_chat_model(model_name: str = settings.OLLAMA_MODEL_NAME, temperature: float = 0.7) -> ChatOllama:
-    """Return a ChatOllama model from LangChain community wrapper."""
-    return ChatOllama(model=model_name, temperature=temperature)
-
+def get_chat_model(model_name: str = settings.GOOGLE_MODEL, temperature: float = 0.7) -> ChatGoogleGenerativeAI:
+    return ChatGoogleGenerativeAI(model=model_name, temperature=temperature, api_key=settings.GOOGLE_API_KEY)
 
 def get_teacher_response_chain():
     model = get_chat_model()
@@ -50,7 +44,7 @@ def get_brave_search_chain():
     return prompt | model
 
 def get_conversation_summary_chain(summary: str = ""):
-    model = get_chat_model(settings.OLLAMA_SUMMARY_MODEL)
+    model = get_chat_model(settings.GOOGLE_SUMMARY_MODEL)
     model = model.bind_tools([retriever_tool])
     summary_message = EXTEND_SUMMARY_PROMPT if summary else SUMMARY_PROMPT
 
@@ -62,7 +56,6 @@ def get_conversation_summary_chain(summary: str = ""):
     )
     
     return prompt | model
-
 
 
 

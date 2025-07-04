@@ -75,8 +75,7 @@ TEACHER_CHARACTER_CARD = Prompt(
 
 
 __SUMMARY_PROMPT = """Create a summary of the conversation between {{teacher_name}} and the user.
-The summary must be a short description of the conversation so far, but that also captures all the
-relevant information shared between {{teacher_name}} and the user: """
+The summary must be a short description of the conversation so far, 80 words max. """
 
 SUMMARY_PROMPT = Prompt(
     name="summary_prompt",

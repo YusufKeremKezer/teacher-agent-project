@@ -1,0 +1,22 @@
+[
+    {
+        "id": "karpathy",
+        "urls": ["https://karpathy.ai"]
+    },
+    {
+        "id": "altman",
+        "urls": ["https://blog.samaltman.com"]
+    },
+    {
+        "id": "ng",
+        "urls": ["https://www.andrewng.org"]
+    },
+    {
+        "id": "lechner",
+        "urls": [""]
+    },
+    {
+        "id": "chollet",
+        "urls": [""]
+    }
+]

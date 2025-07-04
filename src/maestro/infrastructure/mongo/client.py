@@ -5,7 +5,7 @@ from loguru import logger
 from pydantic import BaseModel
 from pymongo import MongoClient, errors
 
-from config import settings
+from ...config import settings
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -59,7 +59,7 @@ class MongoClientWrapper(Generic[T]):
         self.mongodb_uri = mongodb_uri
 
         try:
-            self.client = MongoClient(mongodb_uri, appname=)
+            self.client = MongoClient(mongodb_uri, appname="maestro")
             self.client.admin.command("ping")
         except Exception as e:
             logger.error(f"Failed to initialize MongoDBService: {e}")

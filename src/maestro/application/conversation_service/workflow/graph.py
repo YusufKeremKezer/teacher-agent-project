@@ -71,7 +71,7 @@ async def main():
     teacher = TeacherFactory.get_teacher("karpathy")
 
     input_state = {
-        "messages": [HumanMessage(content="What is the capital of France?")],
+        "messages": [HumanMessage(content="What do you think about the future of AI?")],
         "teacher_name": teacher.name,
         "teacher_perspective": teacher.perspective,
         "teacher_style": teacher.style,

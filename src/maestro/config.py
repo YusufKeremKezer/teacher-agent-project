@@ -10,20 +10,23 @@ class Settings(BaseSettings):
 
     # --- Brave Search Configuration ---
     BRAVE_SEARCH_API_KEY: str = ""  # Optional - only needed for web search tools
-    
+    GOOGLE_API_KEY: str = ""  # Optional - required only when using Google GenAI models
     
     # Default models served by the local Ollama instance
     # Switch from Llama 3 to Google's Gemma family per request
-    OLLAMA_MODEL_NAME: str = "llama3.1"
-    OLLAMA_SUMMARY_MODEL: str = "llama3"
+    GOOGLE_MODEL: str = "gemini-2.5-flash"
+    GOOGLE_SUMMARY_MODEL: str = "gemini-1.5-flash"
     
     # --- MongoDB Configuration ---
     MONGO_URI: str = Field(
-        default="mongodb://maestro:maestro@local_dev_atlas:27017/?directConnection=true",
+        default="mongodb+srv://krmkzr:0553298Aa.@cluster0.jn2o4xo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
         description="Connection URI for the local MongoDB Atlas instance.",
     )
 
-
+    MONGO_DB_NAME: str = "maestro"
+    MONGO_STATE_CHECKPOINT_COLLECTION: str = "maestro_state_checkpoints"
+    MONGO_STATE_WRITES_COLLECTION: str = "maestro_state_writes"
+    MONGO_LONG_TERM_MEMORY_COLLECTION: str = "maestro_long_term_memory"
 
 
     # --- Agents Configuration ---
@@ -39,3 +42,5 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+
