@@ -1,7 +1,7 @@
-# Teacher Agent Project
+# Maestro
 
 ## Overview
-The Teacher Agent Project is a backend service for experimenting with AI "teacher"
+Maestro is a backend service for experimenting with AI "teacher"
 personas that guide a user through a conversation. The system uses a LangGraph
 workflow to orchestrate persona-specific responses, automatic conversation
 summarisation, retrieval-augmented generation (RAG), and optional Brave Search
